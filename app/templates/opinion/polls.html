@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load staticfiles %}
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Parallax Template - Materialize</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/static/css/bootstrap.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  
+  
+   <link href="{% static 'css/style.css'%}" rel="stylesheet">
+    <link href="{% static 'css/style2.css'%}" rel="stylesheet">
+    <link href="/static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="/static/css/font-awesome.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="/static/css/materialize-social.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/static/css/style_.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <style>
+      .card-panel{
+          padding-top:5px;
+          font-weight: bolder;
+      }
+      .in-the-news h6{
+            margin-top:20px;
+            color: #ef2d27;
+            font-weight: bolder;
+      }
+      .in-the-news div{
+            border-bottom: dashed 1px grey;
+            padding-bottom: 10px;
+
+      }
+      #content-container{
+          padding-top: 50px;
+      }
+      .news-thumb-col h6{
+          font-weight: bold;
+      }
+      .news-thumb-col img{
+          max-width: 100%;
+      }
+      .leftnav .collection-item{
+          background-color: #f5f5f5;
+      }
+      .leftnav .collection-item a{
+          color: #444444;
+          text-decoration: none;
+      }
+      .leftnav .collection-item:hover{
+          background-color: #ef2d27;
+          /*color: #f5f5f5;*/
+          font-size: 150%;
+          /*font-weight: bold;*/
+      }
+       .leftnav .collection-item a:hover{
+          color: #ffffff;
+          
+
+
+      }
+      .poll-tag{
+          position: relative;
+      }
+
+
+@media only screen   and (max-width : 320px) {
+    
+      .container{
+        width: 110%;
+      }
+
+    }
+
+
+
+  </style>
+</head>
+<body>
+
+   <!--<div class="navbar-fixed">-->
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper">
+      <a id="logo-container" href="/index" class="brand-logo"><img src="/static/img/udec_logo.png" width="150"></a>
+       
+      <ul class="right hide-on-med-and-down">
+        <li><a class="flow-text" href="/opinion/all">Poll & Survey</a></li>
+        <li><a class="flow-text"  href="#">Services & Solution</a></li>
+        <li><a class="flow-text"  href="/result">Result & Analysis</a></li>
+        <li><a class="flow-text"  href="/result/politics">Politics</a></li>
+        <li><a class="flow-text"  href="/result/economy">Economy</a></li>
+         {% if user.is_authenticated %}
+            <li><a class="flow-text"  href="/logout">Login Out</a></li>
+        {% else %}
+            <li><a class="modal-trigger flow-text" href="#modal1">Login</a></li>
+            
+        {% endif %}
+        
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+         <li><a href="/opinion/all">Poll & Survey</a></li>
+        <li><a href="#">Services & Solution</a></li>
+        <li><a href="/result_">Result & Analysis</a></li>
+        <li><a href="/result/politics">Politics</a></li>
+        <li><a href="/result/economy">Economy</a></li>
+        {% if user.is_authenticated %}
+            <li><a href="/logout">Login Out</a></li>
+        {% else %}
+            <li><a class="modal-trigger" href="#modal1">Login</a></li>
+            
+        {% endif %}
+
+
+
+        
+       
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <!--Modal login-->
+
+
+<!--<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>-->
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    
+  </div>
+          
+
+
+
+<!--end to modal-->
+
+
+<section style="padding-top: 5em">
+    
+            
+    <div  id="content" class="container" style="position: relative">
+    <!-- 1 iteration row begin -->   
+    
+                <div id="row_0" class="row">
+
+                        <script type="text/template" id="dynamictemplate"> 
+
+                        
+                                    
+                                    
+                                        
+                                        <div id="%colid%" class="col-md-12 col-lg-8 col-lg-offset-2 poll-tag" style="padding-bottom:100px;opacity:0">
+                                        
+                                            <div class="agenda center-block">
+                                                <h4 class="agenda-title flow-text" >
+                                                
+                                                    %surveytitle%
+
+                                                </h4>
+                                                <div class="panel panel-primary">
+                                                            <div class="panel-heading">
+                                                                <h4 class="panel-title flow-text" id="%titletext%"></h4>
+                                                            </div>
+                                                            <div class="panel-body">
+
+                                                                <ul id='optionarea' class="list-group">
+                                                                    
+
+
+
+                                                                </ul>
+
+                                                            
+
+
+
+                                                        <button id="%twitter-shareid%" class="btn btn-primary">
+
+                                                            <i class="twitter customer share" href="https://twitter.com/share?url=https://bigwan.pythonanywhere.com&amp;text=Share popup on &amp;hashtags=solixz" title="Twitter share" target="_blank">Twitter</i>
+                                                            
+                                                            
+                                                        </button>
+                                                                
+
+
+                                                                <button  id="%poll-shareid%" data-col="%colid%" class="poll-share btn btn-primary "> <i class="fa  fa-facebook-square ">share</i></button>
+                                                            <button  id="%next%" data-titletext="%titletext%" data-col="%colid%" data-row="%rowid%" name="%btntag%" style="" type="button"  class="btnpoll btn btn-info pull-right ">Next</button>
+                                                            </div>
+
+
+                                                                    <div class="panel-footer">
+                                                                        
+                                                                            <div class="progress">
+                                                                                <div class="progress-bar progress-bar-success" style="width: 35%">
+                                                                                    <span class="sr-only">35% Complete (success)</span>
+                                                                                </div>
+                                                                                <div class="progress-bar progress-bar-warning" style="width: 20%">
+                                                                                    <span class="sr-only">20% Complete (warning)</span>
+                                                                                </div>
+                                                                                <div class="progress-bar progress-bar-info" style="width: 10%">
+                                                                                    <span class="sr-only">10% Complete (danger)</span>
+                                                                                </div>
+                                                                                <div class="progress-bar progress-bar-danger" style="width: 10%">
+                                                                                    <span class="sr-only">10% Complete (danger)</span>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            
+
+                                                                    </div>
+                                                                    
+                                                    
+                                                                    
+                                                </div> 
+                                                
+                                            
+
+
+                                            </div>
+                                        </div>
+                                    
+                                        
+
+                                    
+                        </script>   
+                </div>   
+   
+     </div>
+       
+            
+    </section>
+  
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="/static/js/jquery.js"></script>
+  <script src="/static/js/jquery.form.js"></script>
+  <script src="{% static 'js/bootstrap.js' %}"></script>  
+  <script src="/static/js/materialize.js"></script>
+  <script src="/static/js/init.js"></script>
+  <script src="/static/js/main_.js"></script>
+  <script src="{% static 'js/main_1.js' %}"></script>
+   <!--<script src="{% static 'js/main_pollall.js' %}"></script>-->
+        <script src="{% static 'js/main_1_pollall.js' %}"></script>
+         <script src="{% static 'js/social_popup.js' %}"></script>
+
+<script >
+   
+
+
+  // revealing cards
+$('.card').hover(function(){
+
+    $(this).find('> div.card-image > img.activator').click()
+    console.log('11111111111111')
+
+},function(){
+    $(this).find('> div.card-reveal > span.card-title').click();
+    console.log('222222222222')
+ }
+);
+
+var arrange_poll = function(){
+    var ids=[]
+    var polls=$('.poll-tag')
+    $.each(polls,function(i,e){
+        ids.push('#'+$(e).attr('id'))
+    })
+    ids=ids.sort().reverse();
+
+    $.each(ids,function(i,e){
+       
+        h=$(e).offset().top-100;
+        $(e).css('margin-top',-h+'px');
+    })
+    $(ids[ids.length-1]).css('opacity',1)
+
+
+
+}
+$(function(){
+    
+    setTimeout(function() {
+        arrange_poll();
+        //  $($('.poll-tag')[0]).css('opacity',1)
+      
+
+    }, 5000);
+
+
+
+
+
+    
+})
+
+
+
+
+
+
+
+
+  </script>
+
+  </body>
+</html>

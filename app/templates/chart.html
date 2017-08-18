@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        {% load staticfiles %}
+
+
+
+         <!-- Bootstrap Core CSS-->
+        {% load staticfiles %}
+        <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+       <link href="{% static 'css/bootstrap.css'%}" rel="stylesheet">
+        <!--<link href="{% static 'css/reset.css'%}" rel="stylesheet">
+        <link href="{% static 'css/style.css'%}" rel="stylesheet">
+        <link href="{% static 'css/sidenav.css'%}" rel="stylesheet">
+        <link href="{% static 'css/style2.css'%}" rel="stylesheet">-->
+
+
+        <script src="{% static 'js/jquery.js' %}"></script>        
+        <script src="{% static 'js/bootstrap.js' %}"></script>       
+        <!--<script src="{% static 'js/jquery.visible.js'%}"></script>-->
+        <!--<script src="{% static 'js/jquery.carouFredSel-6.2.1.js'%}"></script>-->
+
+        <script src="{% static 'js/Chart.js' %}"></script>
+        <!--<script type="text/javascript" src="https://connect.facebook.net/en_US/sdk.js"></script>-->
+         <!--<script src="{% static 'js/main.js' %}"></script>
+        <script src="{% static 'js/main_1.js' %}"></script>
+        <script src="{% static 'js/social_popup.js' %}"></script>-->
+
+
+        <style>
+            ul.summary li{
+                text-decoration: none;
+                list-style: none;
+                text-indent: 25px;
+            }
+
+
+
+        </style>
+    </head>
+    <body>
+
+
+        <h1>Setting up Chart</h1>
+
+        
+        <div class="container">
+            
+            <div id="quesrow" class="row">
+                {% for poll in polls %}
+                <div class="quescol col-sm-12">
+
+                    <h3 id="ques_{{forloop.counter0}}" data-qcode="{{poll.poll_code}}">{{poll.poll_question|safe}}</h3>
+                    <div class="col-sm-6">
+                    <canvas id="#myChart_{{forloop.counter0}}"></canvas>
+                    </div>
+                    <div class="col-sm-6">
+                    <ul class="summary" id="summary_{{forloop.counter0}}"> 
+                        <li><h4 style="color: darkorange;text-indent: 0">Survey Summary</h4></li>
+                        <li>Total Participation:</li>
+
+
+                    </ul>
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+            
+        </div>
+        
+
+<script>
+
+    $(function(){
+
+        // var qcode=$('.quescol h3').attr('data-qcode');
+        var qcol=$('.quescol h3');
+
+
+
+        qcol.each(function(i,v){
+            var col=$('')
+            $.ajax({
+                url:'/jsonpolloption',
+                data:{'code': $(v).attr('data-qcode')}
+            }).done(function(data){
+                console.log(data)
+
+
+                        x1 =data[0]['fields'].polloption_text
+                        x2=data[1]['fields'].polloption_text
+                        x3=data[2]['fields'].polloption_text
+                        x4=data[3]['fields'].polloption_text
+
+                        y1 =data[0]['fields'].polloption_score
+                        y2=data[1]['fields'].polloption_score
+                        y3=data[2]['fields'].polloption_score
+                        y4=data[3]['fields'].polloption_score
+
+                        var ts=parseInt(y1)+parseInt(y2)+parseInt(y3)+parseInt(y4)
+                        $('#summary_'+i+' li:nth-child(2n)').html('Total Participation: '+ts)
+                        y1= Math.floor( (y1/ts)*100)
+                        y2= Math.floor( (y2/ts)*100)
+                        y3= Math.floor( (y3/ts)*100)
+                        y4= Math.floor( (y4/ts)*100)
+                        
+
+
+
+
+                        makechart(i,x1,x2,x3,x4,y1,y2,y3,y4,$('#ques_'+i).text());
+
+
+
+
+
+            }).fail(function(){console.log('error..........')})
+        })
+
+
+
+
+
+
+var makechart=function(i,x1,x2,x3,x4,y1,y2,y3,y4,ques){
+
+   
+
+
+     var ctx = $('canvas')[i];
+     console.log(i,x1,x2,x3,x4,y1,y2,y3,y4,'ques')
+    //  ctx.height=100;
+    //  ctx.width=100;
+    var graphtype="bar";
+            if(i%2==0){
+                graphtype='pie';
+            }
+            var myChart = new Chart(ctx, {
+            type: graphtype,
+            data: {
+                labels: [x1,x2,x3,x4],
+                datasets: [{
+                 label: "Udec Interractive Chart",
+                data: [y1,y2,y3,y4],
+                backgroundColor:[ "rgba(92,184,92,1)",
+                                 "rgba(240,173,78,1)",
+                                 "rgba(91,192,222,1)",
+                                 "rgba(217,83,79,1)"
+
+                                 ]
+                }]
+            },
+            options:{
+                 maintainAspectRatio: false,
+                 responsive: false
+            }
+        });
+        
+        // ctx.attr('height','20px');
+        // ctx.attr('width','20px');
+
+
+}
+
+
+    })
+
+
+
+</script>
+
+        
+        
+    
+    </body>
+</html>
+

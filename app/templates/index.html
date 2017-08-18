@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% load staticfiles %}
+  {% load social_widgets %}
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="author" content="">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Udec - A Platform Where U Decide</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="http://bigwan.pythonanywhere.com/static/img/UDEC LOGO.png" rel="shortcut icon" type="image/x-icon">
+
+        <meta property="og:url"           content="http://bigwan.pythonanywhere.com" />
+        <meta property="og:type"          content="article" />
+        <meta property="og:title"         content="Udec Initiative" />
+        <meta property="og:description"   content="Business Research and Opinion Survey Platform" />
+        <meta property="og:image"         content=""/>
+
+        <meta name="twitter:card" content="summary" >
+        <meta name="twitter:site" content="@solixz" >
+        <meta name="twitter:title" content="Unbiased Non-Partisan Analysis of Public Opinion" >
+        <meta name="twitter:description" content="Udec is The Number One Platform that Provide Researh and Analysis of Public Opinion" >
+        <meta name="twitter:creator" content="@solixz" >
+        <meta name="twitter:image" content="http://bigwan.pythonanywhere.com/static/img/chart.png" >
+        <meta name="twitter:domain" content="http://bigwan.pythonanywhere.com" >
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/static/css/bootstrap.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  
+  
+   <link href="{% static 'css/style.css'%}" rel="stylesheet">
+    <link href="{% static 'css/style2.css'%}" rel="stylesheet">
+    <link href="/static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="/static/css/font-awesome.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="/static/css/materialize-social.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/static/css/style_.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  
+</head>
+<body>
+
+
+
+        <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1585449031507058',
+      xfbml      : true,
+      version    : 'v2.9'
+    });
+
+//     FB.ui(
+//  {
+//   method: 'share',
+//   href: 'http://bigwan.pythonanywhere.com'
+// }, function(response){});
+
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+
+  var customerPopup = function (e, intWidth, intHeight, blnResize) {
+    
+    // Prevent default anchor event
+    e.preventDefault();
+    
+    // Set values for window
+    intWidth = intWidth || '500';
+    intHeight = intHeight || '400';
+    strResize = (blnResize ? 'yes' : 'no');
+
+    // Set title and open popup with focus on it
+    var strTitle = ((typeof this.attr('title') !== 'undefined') ? this.attr('title') : 'Social Share'),
+        strParam = 'width=' + intWidth + ',height=' + intHeight + ',resizable=' + strResize,            
+        objWindow = window.open(this.attr('href'), strTitle, strParam).focus();
+  }
+  
+  /* ================================================== */
+  
+ 
+    
+
+
+
+</script>
+
+
+
+
+  <!--<div class="navbar-fixed">-->
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper">
+      <a id="logo-container" href="/" class="brand-logo"><img src="/static/img/udec_logo.png" width="150"></a>
+       
+      <ul class="right hide-on-med-and-down">
+        <li><a class="ps" href="/opinion/all">Poll & Survey</a></li>
+        <li><a href="#">Services & Solution</a></li>
+        <li><a href="/result">Result & Analysis</a></li>
+        <li><a href="/result/politics">Politics</a></li>
+        <li><a href="/result/economy">Economy</a></li>
+         {% if user.is_authenticated %}
+            <li><a href="/logout">Login Out</a></li>
+        {% else %}
+            <li><a class="modal-trigger" href="#modal1">Login</a></li>
+            
+        {% endif %}
+        
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+         <li><a href="/opinion/all">Poll & Survey</a></li>
+        <li><a href="#">Services & Solution</a></li>
+        <li><a href="/result">Result & Analysis</a></li>
+        <li><a href="/result/politics">Politics</a></li>
+        <li><a href="/result/economy">Economy</a></li>
+        {% if user.is_authenticated %}
+            <li><a href="/logout">Login Out</a></li>
+        {% else %}
+            <li><a class="modal-trigger" href="#modal1">Login</a></li>
+            
+        {% endif %}
+
+
+
+        
+       
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <!--Modal login-->
+
+
+<!--<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>-->
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    
+  </div>
+  <div id="modal2" class="modal">
+    <div class="modal-content blue lighten-3">
+      <h5 class="center">Poll information</h5>
+      <p>Thanks for taking part in our online Poll & Survey</p>
+      <p>You can checkout our full Poll & Survey Page by Signing in</p>
+    </div>
+    <div class="modal-footer red darken-1">
+      <a href="#modal1" class="modal-action modal-trigger modal-close waves-effect waves-green btn-flat">Login</a>
+    </div>
+  </div>
+  <div id="modal3" class="modal">
+    <div class="modal-content blue lighten-3">
+      <h5 class="center">Poll & Survey</h5>
+      <p class="center">Login  Required</p>
+      <p>Please Login to fully take advantage of our Poll & survey Page</p>
+    </div>
+    <div class="modal-footer red darken-1">
+      <a href="#modal1" class="modal-action modal-trigger modal-close waves-effect waves-green btn-flat">Login</a>
+    </div>
+  </div>
+          
+
+
+
+<!--end to modal-->
+
+
+
+
+
+
+
+  <!--</div>-->
+  <div style="background: rgba(100, 87, 181, 0.56);">
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot ">
+      <div id="msg-wrapper" class="container ">
+        <br><br>
+        
+        <h1  class="header center white-text text-lighten-2 msg">Welcome To Udec</h1>
+        <div class="row center msg" >
+          <h5 class="header col s12 light">A Platform That Gives Life To Your Opinion </h5>
+        </div>
+        <div  class="row center msg">
+          <a href="#" id="download-button" class="btn-large waves-effect waves-light blue lighten-1">Get Started</a>
+        </div>
+        
+        <br><br>
+
+      </div>
+    </div>
+    <!--<div class="parallax"><img src="/static/img/eastv1.jpg" alt="Unsplashed background img 1"></div>-->
+  </div>
+  </div>
+
+<div id="uid">{{user.username}}</div>
+
+
+
+
+
+  <div class="container">
+    <div id="feed-analysis" class="section">
+
+      <div class="fixed-action-btn vertical">
+          <a class="btn-floating btn-small red">
+            <i class="small material-icons">mode_edit</i>
+          </a>
+          <ul>
+            <li id="to_team" class="tooltipped left" data-tooltip="our team"><a class="btn-floating red "><i class="material-icons">group</i></a></li>
+            <li id="to_contact" class="tooltipped left" data-tooltip="our contacts"><a class="btn-floating yellow darken-1"><i class="material-icons">contact mail</i></a></li>
+            <li id="to_service" class="tooltipped left" data-tooltip="our services"><a class="btn-floating green"><i class="material-icons">settings</i></a></li>
+            <li id="to_poll" class="tooltipped left" data-tooltip="Poll"><a  class="btn-floating blue"><i class="material-icons">poll</i></a></li>
+          </ul>
+      </div>
+
+     
+          <div class="row">
+                <div class="col s12 m12 l6">
+                
+                 
+                 <div id="carousel1" class="carousel carousel-slider center" data-indicators="false">
+                     {% for feed in scrapyfeed %}
+                      <div class="carousel-item">
+                             <div class="card">
+                                  <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="/static/img/eastv1.jpg" >
+                                    <!--<img class="activator" src="{{feed.image}}" >-->
+                                    
+                                  </div>
+
+
+                                  
+                                  <div class="card-content">
+                                    <a  class="btn-floating halfway-fab waves-effect waves-light red activator"><i class="material-icons">add</i></a>
+                                    <span class="flow-text tiny card-title activator red-text text-darken-4"><p style="font-weight: bold"> {{feed.title|safe|truncatewords_html:10}}</p></a></span>
+                                  
+                                  </div>
+                                  <div class="card-reveal">
+                                    <span class="flow-text  card-title grey-text text-darken-4"> {{feed.title|safe}}<i style="position: absolute;top:0;right: 1px" class="fa fa-window-close"></i></span>
+                                    <p class="flow-text"> {{ feed.story|safe}}</p>
+                                  </div>
+                            </div>
+                      </div>
+                      {% endfor%}
+
+                     
+                     
+                    </div>
+                
+
+
+              </div>
+
+
+
+              <div class="col s12 m12 l6">
+                
+                 
+                 <div id="carousel2" class="carousel carousel-slider center" data-indicators="true">
+                     {% for page in pages %}
+                      <div class="carousel-item">
+                             <div class="card">
+                                  <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" src="/media/{{page.story_hero_image}}" >
+                                    
+                                  </div>
+                                  
+                                  <div class="card-content">
+                                    <a  class="btn-floating halfway-fab waves-effect waves-light red activator"><i class="material-icons">add</i></a>
+                                    <span class="flow-text tiny card-title activator red-text text-darken-4"> <p  style="font-weight: bold">{{page.title|safe|truncatewords_html:10}}</p></a></span>
+                                  
+                                  </div>
+                                  <div class="card-reveal">
+                                    <span class="flow-text  card-title grey-text text-darken-4"> {{page.title|safe}}<i style="position: absolute;top:0;right: 1px" class="fa fa-window-close"></i></span>
+                                    <p class="flow-text"> {{ page.story_content|safe}}</p>
+                                  </div>
+                            </div>
+                      </div>
+                      {% endfor%}
+
+                     
+                     
+                    </div>
+                
+
+
+              </div>
+
+          
+          </div>
+
+    </div>
+  </div>
+
+
+  <div class="parallax-container valign-wrapper">
+    <div class="section poll-intro">
+      <div class="container">
+        <div class="row center">
+          <h2 class=" header col s12 light">Check Out Udec Latest Polls & Survey</h2>
+          <h4 class="flow-text header col s12 light">Compare Your Opinion with Public View On National Issues</h4>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="/static/img/Lagos14.jpg" alt="Unsplashed background img 2"></div>
+  </div>
+
+
+ <div id="poll-container"  class="container section">
+        <div id="poll-spot" class="row">
+            <!--<div  class="section">-->
+
+              
+                      <div id="row_0" >
+
+                                <script type="text/template" id="dynamictemplate"> 
+
+                            
+                                            
+                                            
+                                                
+                                                <div id="%colid%" class="col s12 m12 l6" style="margin-bottom:50px">
+                                                
+                                                    <div class="agenda center-block">
+                                                        <h5 class="flow-text agenda-title">
+                                                        
+                                                            %surveytitle%
+
+                                                        </h5>
+                                                        <div class="panel panel-primary">
+                                                                    <div class="panel-heading">
+                                                                        <h4 class="panel-title" id="%titletext%"></h4>
+                                                                    </div>
+                                                                    <div class="panel-body">
+
+                                                                        <ul id='optionarea' class="list-group">
+
+
+
+                                                                          </ul>
+                                                                            
+
+
+                                                                <!--<button id="%twitter-shareid%" class="btn small ">-->
+                                                                        
+                                                                        
+                                                                    <i id="%twitter-shareid%"  class="twitter customer share btn waves-effect waves-light" href="https://twitter.com/share?url=https://bigwan.pythonanywhere.com&amp;text=%mytext% &amp;hashtags=solixz" title="Twitter share" target="_blank">Twitter</i>
+                                                                    <!---->
+                                                                    
+                                                                <!--</button>-->
+                                                                        
+
+
+                                                                        <button  id="%poll-shareid%" data-col="%colid%" class="facebook poll-share btn  "> <i class="fa  fa-facebook-square ">share</i></button>
+                                                                    <button  id="%next%" data-titletext="%titletext%" data-col="%colid%" data-row="%rowid%" name="%btntag%" style="" type="button"  class="btnpoll btn btn-info pull-right waves-effect waves-light blue">Next</button>
+                                                                    </div>
+
+
+                                                                            <div class="panel-footer">
+                                                                                
+                                                                                    <div class="progress">
+                                                                                        <div class="progress-bar progress-bar-success" style="width: 35%">
+                                                                                            <span class="sr-only">35% Complete (success)</span>
+                                                                                        </div>
+                                                                                        <div class="progress-bar progress-bar-warning" style="width: 20%">
+                                                                                            <span class="sr-only">20% Complete (warning)</span>
+                                                                                        </div>
+                                                                                        <div class="progress-bar progress-bar-info" style="width: 10%">
+                                                                                            <span class="sr-only">10% Complete (danger)</span>
+                                                                                        </div>
+                                                                                        <div class="progress-bar progress-bar-danger" style="width: 10%">
+                                                                                            <span class="sr-only">10% Complete (danger)</span>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    
+
+                                                                            </div>
+                                                                            
+                                                            
+                                                                            
+                                                        </div> 
+                                                        
+                                                    
+
+
+                                                    </div>
+                                                </div>
+                                                
+
+                                            
+                                </script>   
+                        </div> 
+
+
+
+
+
+            <!--</div>-->
+        </div>
+  </div>
+
+
+
+
+
+
+  <div id="service" class="container">
+    <div class="service-section section">
+
+      <div class="row">
+        <div class="col s12 center">
+
+
+                <div  class="col s12 center">
+                    <span class="">
+                    <h4 class="">Services and Solutions</h4>
+                    </span>
+                </div>
+                <div class="col l4 "  style="text-align: center">
+                    <ul class="our-service1">
+                        <!--<li><i class="fa fa-bicycle fa-3x"></i></li>-->
+                        <!--<li><img src="/static/img/MARKET RESEARCH.png" width="80" /></li>-->
+                        <li><img src="/static/img/MARKET RESEARCH.png" width="80"></li>
+                        <li><h5  class="service-sublist  blue-text text-darken-4">Market Research</h5></li>
+                        <li><p>I have made two files for this purpose. The class 
+                            file contains class and function to fetch the required data. And the usage file 
+                            contains code to display it. I have written enough comments in the code 
+                            for better understanding.
+                            </p>
+                         </li>
+                        
+                    </ul>
+                </div>
+                <div class="col l4"  style="text-align: center">
+                    <ul class="our-service2" >
+                        <!--<li><i class="fa fa-hourglass-end fa-3x"></i></li>-->
+                        <!--<li><img src="/static/img/ELECTION PREDICTION1.png" width="80" /></li>-->
+                        <li><img src="/static/img/ELECTION PREDICTION1.png" width="80"></li>
+                        <li><h5  class="service-sublist blue-text text-darken-4">Election Prediction</h5></li>
+                        <li><p>I have made two files for this purpose. The class 
+                            file contains class and function to fetch the required data. And the usage file 
+                            contains code to display it. I have written enough comments in the code 
+                            for better understanding.
+                            </p>
+                         </li>
+                        
+                    </ul>
+                </div>
+                <div class="col l4"  style="text-align: center">
+                    <ul class="our-service3">
+                        <!--<li><i class="fa fa-product-hunt fa-3x"></i></li>-->
+                        <!--<li><img src="/static/img/PRODUCT ANALYSIS1.png" width="80" /></li>-->
+                        <li><img src="/static/img/PRODUCT ANALYSIS1.png" width="80"></li>
+                        <li><h5  class="service-sublist blue-text text-darken-4">Product Analysis</h5></li>
+                        <li><p>I have made two files for this purpose. The class 
+                            file contains class and function to fetch the required data. And the usage file 
+                            contains code to display it. I have written enough comments in the code 
+                            for better understanding.
+                            </p>
+                         </li>
+                        
+                    </ul>
+                </div>
+         
+
+
+
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+<div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+        </div>
+      </div>
+    </div>
+    <div class="parallax"><img src="/static/img/Lagos9.jpg" alt="Unsplashed background img 3"></div>
+  </div>
+
+
+  <div id="team" style="margin-bottom: 100px" class="container">
+    <div class="section team-section" style="padding-top: 50px">
+
+      <div class="row">
+        <div class="col s12 center">
+            <h4>Our Team</h4>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12 center">
+
+              <div class="col m6 l3">
+
+                  <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                          <img class="activator" src="/static/img/Dr.-Jim-Yong-Kim.jpg">
+                        </div>
+                        <div class="card-content">
+                          <span class="tiny card-title activator grey-text text-darken-4">Soliu<a class="btn-floating halfway-fab waves-effect waves-light red"><i class="tiny material-icons right">add</i></a></span>
+                         
+                        </div>
+                        <div class="card-reveal">
+                          <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                          <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                        </div>
+                  </div>
+
+
+              </div>
+              <div class="col m6 l3">
+
+                  <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                          <img class="activator" src="/static/img/Dr.-Jim-Yong-Kim.jpg">
+                        </div>
+                        <div class="card-content">
+                          <span class="tiny card-title activator grey-text text-darken-4">Soliu<a class="btn-floating halfway-fab waves-effect waves-light red"><i class="tiny material-icons right">add</i></a></span>
+                         
+                        </div>
+                        <div class="card-reveal">
+                          <span class="card-title grey-text text-darken-4">Adewale Soliu<i class="material-icons right">close</i></span>
+                          <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                        </div>
+                  </div>
+
+
+              </div>
+              <div class="col m6 l3">
+
+                  <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                          <img class="activator" src="/static/img/Dr.-Jim-Yong-Kim.jpg">
+                        </div>
+                        <div class="card-content">
+                          <span class="tiny card-title activator grey-text text-darken-4"> Soliu<a class="btn-floating halfway-fab waves-effect waves-light red"><i class="tiny material-icons right">add</i></a></span>
+                         
+                        </div>
+                        <div class="card-reveal">
+                          <span class="card-title grey-text text-darken-4">Adewale Soliu<i class="material-icons right">close</i></span>
+                          <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                        </div>
+                  </div>
+
+
+              </div>
+              <div class="col m6 l3">
+
+                  <div class="card">
+                        <div class="card-image waves-effect waves-block waves-light">
+                          <img class="activator" src="/static/img/Dr.-Jim-Yong-Kim.jpg">
+                        </div>
+                        <div class="card-content">
+                          <span class="tiny card-title activator grey-text text-darken-4">Soliu<a class="btn-floating halfway-fab waves-effect waves-light red"><i class="tiny material-icons right">add</i></a></span>
+                         
+                        </div>
+                        <div class="card-reveal">
+                          <span class="card-title grey-text text-darken-4">Adewale Soliu<i class="material-icons right">close</i></span>
+                          <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                        </div>
+                  </div>
+
+
+              </div>
+            
+
+
+         </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  
+
+
+  <div id="contact" class="parallax-container valign-wrapper">
+    <div style="" class="section no-pad-bot">
+      <div class="container contact-container">
+        
+
+              <div class="row">
+                <div class="col s12 center">
+                  <h3><i class="mdi-content-send brown-text"></i></h3>
+                  <h4>Contact Us</h4>
+
+                      <h5>We’ll love to hear from you</h5>
+                      <h6>If you’d like to work with professionals and creatives mind who understand governance like the back of their hand, give us a call.</h6>
+                
+
+
+
+
+
+
+                  </div>
+                </div>
+                <div style="padding-top: 50px" class="row">
+                      <div class="col s12 center">
+
+                              <div class="col m4">
+
+                                  <div class="card">
+                                        <div class="card-image waves-effect waves-block waves-light" style="text-align: center">
+                                          <img class="activator" style="display: none" src="">
+                                          <i class="large material-icons right text-red ">explore</i>
+                                        </div>
+                                        <div   class="card-content activator" style="  color: black">
+                                          <i class="fa fa-4x fa-address-card"></i>
+                                          <h5>Our Office </h5>
+                                        </div>
+                                        <div   class="card-reveal" style=" color: black">
+                                          <span class="card-title grey-text text-darken-4">Head Office<i style="position: absolute;top:0;right: 1px" class="fa fa-window-close"></i></span>
+                                          
+                                          <h6>8/10 Broad Street,Western House, Lagos Island</h6>
+                                        </div>
+                                       
+                                  </div>
+
+
+                              </div>
+                              <div class="col m4">
+
+                                     <div class="card">
+                                        <div class="card-image waves-effect waves-block waves-light" style="text-align: center">
+                                          <img class="activator" style="display: none" src="">
+                                          <i class="large material-icons right text-red ">explore</i>
+                                        </div>
+                                        <div   class="card-content activator" style="  color: black">
+                                          <i class="fa fa-4x fa-phone"></i>
+                                          <h5>Hot Lines </h5>
+                                        </div>
+                                        <div  class="card-reveal" style=" color: black">
+                                          <span class="card-title grey-text text-darken-4">Hot Lines<i style="position: absolute;top:0;right: 1px" class="fa fa-window-close"></i></span>
+                                          
+                                          <h6>+234 813 577 3940</h6>
+                                        </div>
+                                       
+                                  </div>
+
+
+                              </div>
+                              <div class="col m4">
+
+                                     <div class="card">
+                                        <div class="card-image waves-effect waves-block waves-light" style="text-align: center">
+                                          <img class="activator" style="display: none" src="">
+                                          <i class="large material-icons right text-red ">explore</i>
+                                        </div>
+                                        <div   class="card-content activator" style="  color: black">
+                                          <i class="fa fa-4x fa-chevron-left"></i>
+                                          <h5>Mail Us </h5>
+                                        </div>
+                                        <div  class="card-reveal" style=" color: black">
+                                          <span class="card-title grey-text text-darken-4">E-mail<i style="position: absolute;top:0;right: 1px" class="fa fa-window-close"></i></span>
+                                          
+                                          <h6>solixzsystem@gmail.com</h6>
+                                        </div>
+                                       
+                                  </div>
+
+
+                              </div>
+                              
+                      
+
+
+                      </div>
+                </div>
+
+
+
+      </div>
+    </div>
+    <div  class="parallax"><img src="/static/img/Lagos9.jpg" alt="Unsplashed background img 3"></div>
+  </div>
+
+  <footer class="page-footer " style="background-color: #266aa4;">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col l3 s12">
+           <ul>
+                <li class="footer-subhead"><h5>Udec On Twitter</h5></li>
+
+                <li> <a class="twitter-timeline"  href="https://twitter.com/hashtag/unity3d" data-widget-id="882244242508328960">#unity3d Tweets</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                </li>
+            </ul>
+
+        </div>
+        <div class="col l3 s12">
+            
+            <ul>
+                                <li class="footer-subhead"><h5>UDEC Initiative </h5></li>
+                                <li style="text-align: left">
+                                    <p>
+                                        The Bigwan Initiative is poised to be the first indigenous research
+                                         based strategy group in Nigeria. Our goal is to provide data 
+                                         oriented services to a host of consumers while also offering predictive 
+                                         solutions to a wide variety of clients. 
+                                    </p>
+                                    <li>
+
+                                         <div class="social-buttons">
+                             
+
+                                <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+                                <script type="IN/Share" data-url="http://bigwan.pythonanywhere.com"></script>
+                                {% social_widget_render "twitter/follow_button.html" username="solixz" show_screen_name=True %}
+                              
+                                        
+                                    </li>
+                                
+                            </ul>
+
+        </div>
+        <div class="col l3 s12">
+              <ul class="footer-subhead"><h5>Contact Us</h5></li>
+                     <li>
+                                    No 42, 5th Floor,
+                                    Western House, Broad Street
+                                    +234 (0) 8135773940
+                                    +234 (0) 0000000000
+                                    info@udecinitiative.com
+
+                                    
+                      </li>
+                      </ul>
+        </div>
+
+         <div class="col l3 s12" style="padding-right: 10px">
+                 <ul>
+                      <li class="footer-subhead"><h5>Locate Us:</h5></li>
+                      <li id="map">
+                          <iframe style="border-radius: 5px;position: relative" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.5346251869987!2d3.387373814604186!3d6.453732425761343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b11de11c53b%3A0x8d3e2dca80ed48ca!2sWestern+House%2C+Broad+St%2C+Lagos+Island%2C+Lagos!5e0!3m2!1sen!2sng!4v1499248624923" width="300" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+                      </li>
+                </ul>
+
+         </div>
+
+
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="brown-text text-lighten-3" href="/">Udec</a>
+      </div>
+      <div class="container">
+     
+      <p>&nbsp</p>
+      <p>&nbsp</p>
+      </div>
+    </div>
+
+
+                <!-- EXCHANGERATES.ORG.UK LIVE CURRENCY RATES TICKER START -->
+<iframe id="ticker" src="http://www.exchangerates.org.uk/widget/ER-LRTICKER.php?w=1800&s=1&mc=NGN&mbg=F0F0F0&bs=yes&bc=000044&f=verdana&fs=10px&fc=000044&lc=000044&lhc=FE9A00&vc=FE9A00&vcu=008000&vcd=FF0000&" width="1800" height="30" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
+<!-- EXCHANGERATES.ORG.UK LIVE CURRENCY RATES TICKER END -->
+
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="/static/js/jquery.js"></script>
+  <script src="/static/js/jquery.form.js"></script>
+  <script src="{% static 'js/bootstrap.js' %}"></script>  
+  <script src="/static/js/materialize.js"></script>
+  <script src="/static/js/init.js"></script>
+  <script src="/static/js/main_.js"></script>
+  <script src="{% static 'js/main_1.js' %}"></script>
+
+   <script src="{% static 'js/Chart.js' %}"></script>
+        <script type="text/javascript" src="https://connect.facebook.net/en_US/sdk.js"></script>
+         <!--<script src="{% static 'js/main.js' %}"></script>-->
+        
+        
+        <script src="{% static 'js/social_popup.js' %}"></script>
+
+<script >
+
+  // revealing cards
+$('.card').hover(function(){
+
+    $(this).find('> div.card-image > img.activator').click()
+    // console.log('11111111111111')
+
+},function(){
+    $(this).find('> div.card-reveal > span.card-title').click();
+    // console.log('222222222222')
+ }
+);
+
+// Logic for accessing poll & survey
+$('.ps').click(function(e){
+  e.preventDefault();
+  if ($('#uid').text()==""){
+    $('#modal3').modal();
+    $('#modal3').modal('open');
+    
+  }else{
+    window.location.href='/opinion/all'
+  }
+
+})
+
+
+  </script>
+
+  </body>
+</html>

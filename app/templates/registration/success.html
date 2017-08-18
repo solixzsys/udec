@@ -1,0 +1,26 @@
+
+<div class="modal-content">
+<div class="bform" style="border: solid 1px grey;border-radius: 5px;padding: 50px;opacity: 0.8">
+    
+    
+            
+<!--<h2 style="padding: 20px 0; ">Login</h2>-->
+
+<h4 style="padding: 20px 0">Login Successfull </h4>
+
+
+</div>
+</div>
+<script>
+$(function(){
+    setTimeout(function(){
+        $('#modal1').animate({'opacity':0},5000,function(){
+            $(this).hide();
+        });
+        window.location.href='/index'
+    },1000)
+})
+</script>
+<script src="/static/js/jquery.js"></script>
+  <script src="/static/js/jquery.form.js"></script>
+  

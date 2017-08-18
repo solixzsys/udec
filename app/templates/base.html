@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}base document{% endblock %}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+         {% load staticfiles %}
+         <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet">
+       <link href="{% static 'css/bootstrap.css'%}" rel="stylesheet">
+       <link href="{% static 'css/bootstrap-social.css' %}" rel="stylesheet">
+        <link href="{% static 'css/reset.css'%}" rel="stylesheet">
+        <link href="{% static 'css/style.css'%}" rel="stylesheet">
+        <link href="{% static 'css/sidenav.css'%}" rel="stylesheet">
+        <link href="{% static 'css/style2.css'%}" rel="stylesheet">
+
+          {% load social_widgets %}
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+        {% block extra_style %}{% endblock %}
+       
+        {% block side_nav_style %}
+
+        <style>
+
+            #hero-header-container{
+                height: 300px;
+                background: url(/static/img/bg3.jpg) no-repeat;
+                background-size: cover;
+                
+            }
+            .hero-layer{
+                padding-top:200px;
+                /*background-color: #555;*/
+                /*opacity: 1;*/
+                width: 100%;
+                height: 100%;
+                /*opacity: 0.3;*/
+                position: relative;
+            }
+
+
+
+    .sidebar2{
+    /*height: 100%;*/
+    /*width: 0;*/
+    /*position: fixed;*/
+    /*z-index: 1;
+    top:0;
+    left: 0;*/
+    background-color: #111;
+    /*overflow-x: hidden;*/
+    padding-top:20px;
+    /*transition: 0.5s; */
+    display: none;
+    
+}
+
+.sidebar2 a{
+    padding: 8px 20px 8px 20px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    /*transition: 0.3s;*/
+    border-top: solid 2px black; 
+}
+
+.sidebar2 input{
+    margin-left: 20px;
+    margin-left: 20px;
+}
+
+.sidebar2 a:hover{
+    background-color: #444;
+    font-size: 100%;
+}
+.sidebar2 .closebtn{
+    position: absolute;
+    top:40px;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+@media screen and (max-width: 1000px){
+    #sidebar_id2{
+        display: none;
+    }
+
+}
+@media screen and (min-width: 1000px){
+    #sidebar_id{
+        display: none;
+    }
+
+}
+
+nav{
+    display: block;
+}
+
+        </style>
+        
+        
+        
+        {% endblock %}
+
+
+
+
+    </head>
+    <body>
+        
+
+        <!--TOP NAVIGATION BAR-->
+        <section id="header">
+
+            
+            <nav id="navstate" class="navbar navbar-default navbar-fixed-top  " role="navigation">
+                <div class="container-fluid">
+                <div class="navbar-header">
+               
+
+                <button id="navbtn" type="button" class="navbar-toggle  " data-toggle="collapse" >
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="/"><img  width="100" height="30" src="{% static 'img/UDEC LOGO.png' %}" /></a>
+                </div>
+
+                    <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+      
+      <div class=" mynav navbar-right" style="padding-top: 15px;padding-right: 15px">
+                          
+                            <a href="#">Politics</a>
+                            <a href="#">Economy</a>
+                            <a href="/services">Solution & Services</a>
+                            <!--<a href="#">Poll & Survey</a>-->
+                            <!--<a href="/result">Result</a>-->
+                            <a href="#">Society</a>
+                            <a href="/about">About Us</a> 
+                            <a href="/team">Our Team</a>   
+                            <a href="#">Contact Us</a>
+                            {% if user.is_authenticated %}
+                            <a href="{% url 'logout' %}?next={% url 'home' %}">Login Out</a>
+                            <a id="avatar" style="margin-left: 10px" class=" fa fa-user  "></a>
+                            {% else %}
+                            <a href="/login">Login</a>
+                            <a href="/signup">Join Us</a>
+                            {% endif %}
+      </div>
+    <!--</div>-->
+    <!-- /.navbar-collapse -->
+
+
+                </div><!-- /.container-fluid -->
+</nav>
+
+           
+            
+
+
+
+        </section>
+
+
+<!--</section>-->
+<!---->
+
+
+<!-- HERO HEADER SECTION-->
+
+{% block hero %}
+<section id="hero-header">
+    
+    <div id="hero-header-container"  class="container-fluid">
+        <div class="hero-layer" style="text-align: center">
+            <h1 style="" class="">We provide non-partisan analysis of political and economic policies </h1>
+        </div>
+
+       
+    </div>
+    
+{% endblock %}
+
+
+<!-- HERO HEADER SECTION END-->
+
+
+
+<div id="sidebar_id" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn"  >&times</a>
+             <input type="text" placeholder="Search" class="searchtxt  form-control" style="" />
+
+                             <a href="#">Politics</a>
+                            <a href="#">Economy</a>
+                            <a href="/services">Solution & Services</a>
+                            <!--<a href="#">Poll & Survey</a>-->
+                            <!--<a href="/result">Result</a>-->
+                            <a href="#">Society</a>
+                            <a href="/about">About Us</a> 
+                            <a href="/team">Our Team</a>   
+                            <a href="#">Contact Us</a>
+                            {% if user.is_authenticated %}
+                            <a href="{% url 'logout' %}?next={% url 'home' %}">Login Out</a>
+                           
+                            {% else %}
+                            <a href="/login">Login</a>
+                            <a href="/signup">Join Us</a>
+                            {% endif %}
+
+        </div>
+
+
+        <!--EOND OF TOP NAVIGATION BAR-->
+        <!--CONTENT-->
+        <section id="content" style="padding-top: 100px">
+
+            
+            <div class="container">
+                
+                <div class="row">
+                    
+
+                    
+
+
+                    
+                
+                
+                
+            
+            
+
+            <!--LEFT COLUMN-->
+
+            <section id="leftcol">
+                <div class="col-lg-3" style="padding-right: 40px">
+                {%block leftcol%}
+
+                <div id="sidebar_id2" class="sidebar2" style="  ">
+            <!--<a href="javascript:void(0)" class="closebtn"  >&times</a>-->
+             <input type="text" placeholder="Search" class="searchtxt  form-control" style="" />
+
+                            <a href="#">Politics</a>
+                            <a href="#">Economy</a>
+                            <a href="/services">Solution & Services</a>
+                            <!--<a href="#">Poll & Survey</a>-->
+                            <!--<a href="/result">Result</a>-->
+                            <a href="#">Society</a>
+                            <a href="/about">About Us</a> 
+                            <a href="/team">Our Team</a>   
+                            <a href="#">Contact Us</a>
+                            {% if user.is_authenticated %}
+                            <a href="{% url 'logout' %}?next={% url 'home' %}">Login Out</a>
+                            
+                            {% else %}
+                            <a href="/login">Login</a>
+                            <a href="/signup">Join Us</a>
+                            {% endif %}
+
+        </div>
+
+
+
+
+                {% endblock %}
+                </div>
+
+            </section>
+            <!--END OF LEFT COLUMN-->
+
+            <!-- MIDDLE COLUMN-->
+
+             <section id="middlecol">
+                 <div class="col-lg-6">
+                 {% block middlecol %}
+
+
+                {% endblock %}
+                 </div>
+
+             </section>
+
+
+            <!--END OF MIDDLE COLUMN-->
+
+            <!-- RIGHT COLUMN-->
+             <section id="rightside">
+                 <div class="col-lg-3" style="padding-left: 50px">
+                 {% block rightcol %}
+
+                {% endblock %}
+                 </div>
+
+             </section>
+            <!--END OF RIGHT COLUMN-->
+            </div>
+
+            </div>
+
+        
+        </section>
+
+
+        <!--END OF CONTENT-->
+
+
+        <!--FOOTER -->
+           <footer style="background-color: #02327e">
+            
+            <div class="container-fluid farea" style="font-family: inherit;line-height: 1.5">
+                
+                <div class="row" style="padding: 30px 0">
+                    
+                    <div class="col-xs-12 col-sm- col-md-12 col-lg-12">
+                        
+
+                        <div  class="footer-nav" >
+                            
+
+                                           
+                             <a href="#">Politics</a>
+                            <a href="#">Economy</a>
+                            <a href="/services">Solution & Services</a>
+                            <!--<a href="#">Poll & Survey</a>-->
+                            <!--<a href="/result">Result</a>-->
+                            <a href="#">Society</a>
+                            <a href="/about">About Us</a> 
+                            <a href="/team">Our Team</a>   
+                            <a href="#">Contact Us</a>
+                            {% if user.is_authenticated %}
+                            <a href="{% url 'logout' %}?next={% url 'home' %}">Login Out</a>
+                           
+                            {% else %}
+                            <a href="/login">Login</a>
+                            <a href="/signup">Join Us</a>
+                            {% endif %}
+                            
+                            
+                            
+
+                        </div>
+
+                    </div>
+                    
+                    
+                   
+                </div>
+                    
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <ul>
+                                <li class="footer-subhead"><h4>Udec On Twitter</h4></li>
+
+                                       <li> <a class="twitter-timeline"  href="https://twitter.com/hashtag/unity3d" data-widget-id="882244242508328960">#unity3d Tweets</a>
+                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                                       </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3">
+                            <ul>
+                                <li class="footer-subhead"><h4>UDEC Initiative </h4></li>
+                                <li style="text-align: left">
+                                    <h6>
+                                        The Bigwan Initiative is poised to be the first indigenous research
+                                         based strategy group in Nigeria. Our goal will be to provide data 
+                                         oriented services to a host of consumers while also offering predictive 
+                                         solutions to a wide variety of clients. 
+
+                                    </h6>
+                                    <li>
+
+                                         <div class="social-buttons">
+                               <!--<a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ffxsoftlogix.com%2F&amp;src=sdkpreparse">
+                                    <i class="fa fa-4x fa-facebook-square"></i>
+                                </a>
+                                
+                                <a href="https://twitter.com/share"  data-size="large" data-url="http://fxsoftlogix.com" data-via="solixz" data-hashtags="udec" data-show-count="false"><i class="fa fa-4x fa-twitter-square"></i></a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+                               <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+                            <script type="IN/Share" data-url="http://fxsoftlogix.com"></script>
+                                </a>
+                                <a href="mailto:name@mail.com?cc=info@bedjango.com&amp;subject=Check%20this%20article%20out!!&amp;body=Link%20with%20interesting%20content%20about%20Django%0D%0Ahttp://www.bedjango.com/blog/how-add-buttons-django-admin/" class="send-email">
+                                    <i class="fa fa-4x fa-google-plus-square"></i>
+                                </a>-->
+                                <!--{% social_widget_render 'facebook/likebox.html' href='https://www.facebook.com/FacebookDevelopers' %}-->
+
+                                <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+                                <script type="IN/Share" data-url="http://fxsoftlogix.com"></script>
+                                {% social_widget_render "twitter/follow_button.html" username="solixz" show_screen_name=True %}
+                                <div class="fb-share-button" data-href="http://fxsoftlogix.com" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Ffxsoftlogix.com%2F&amp;src=sdkpreparse">Share</a></div>
+                                <!--{% social_widget_render "facebook/share_button.html" locale="en_US" app_id=12345678 href="developers.facebook.com" layout="none" %}-->
+                            </div>
+
+                                        
+                                    </li>
+                                <!--<li>Market Research and Analysis</li>-->
+                                <!--<li>Product Promotion</li>
+                                <li>Corporate Branding</li>
+                                <li>Personal Branding</li>
+                                <li>Political Analysis and Chances Deduction</li>
+                                <li>Data Minning</li>-->
+
+
+                            </ul>
+                        </div>
+                        
+                        <div id="contact" class="col-xs-12 col-sm-3" style="text-align:left;padding:0 4%" >
+                            <ul class="contact-us">
+                                <li class="footer-subhead"><h4>Contact Us</h4></li>
+                                <li>
+                                    No 42, 5th Floor,
+                                    Western House, Broad Street
+                                    +234 (0) 8135773940
+                                    +234 (0) 0000000000
+                                    info@udecinitiative.com
+
+                                    
+                                </li>
+
+                            </div>
+                            <div class="col-sm-3" style="padding-right: 10px">
+                                <ul>
+                                    <li class="footer-subhead"><h4>Locate Us:</h4></li>
+                                <li id="map">
+                                    <iframe style="border-radius: 5px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.5346251869987!2d3.387373814604186!3d6.453732425761343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b11de11c53b%3A0x8d3e2dca80ed48ca!2sWestern+House%2C+Broad+St%2C+Lagos+Island%2C+Lagos!5e0!3m2!1sen!2sng!4v1499248624923" width="300" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                        
+                        
+                        
+                    </div>
+                    
+                
+                
+            </div>
+            
+
+
+
+        </footer>
+
+
+
+
+        <!--END OF FOOTER-->
+
+
+
+
+
+         <script src="{% static 'js/jquery.js' %}"></script>
+        
+        <script src="{% static 'js/bootstrap.js' %}"></script>
+        <!--<script src="{% static 'js/main.js' %}"></script>-->
+        <script src="{% static 'js/jquery.visible.js'%}"></script>
+       
+       <script>
+
+           $('.closebtn').on('click',function(){
+    $('#sidebar_id').css({'width':'0'});
+    // $('body').css({'margin-left':'0'});
+})
+
+
+
+           $('#navbtn').on('click',function(){
+    console.log('navbtn click................................')
+    if($(window).width()<768){
+        
+        console.log('less than 768................................')
+       if(parseInt($('#sidebar_id').css('width'))<1){
+    $('#sidebar_id').css({'width':'250px'});
+    // $('body').css({'margin-left':'250px'});
+}else{
+    $('#sidebar_id').css({'width':'0'});
+    // $('body').css({'margin-left':'0'});
+console.log('navbtn click................................')
+    }
+    }
+})
+
+
+
+
+           </script>
+            {% block extra_script %}{% endblock %}
+    
+    </body>
+</html>

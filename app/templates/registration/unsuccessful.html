@@ -1,0 +1,105 @@
+
+<div class="modal-content">
+<div class="bform" style="border: solid 1px grey;border-radius: 5px;padding: 50px;">
+    
+    
+            
+<!--<h2 style="padding: 20px 0; ">Login</h2>-->
+
+<h6 style="padding: 20px 0">Using Socials</h6>
+
+
+
+<!--<a href="{% url 'social:begin' 'github' %}">Login with GitHub</a><br>-->
+<!--<a href="{% url 'social:begin' 'twitter' %}">Login with Twitter</a><br>-->
+      <!--<a href="{% url 'social:begin' 'facebook' %}"><i class="fa fa-4x fa-facebook-square">kiuoiu</i></a>-->
+    <a href="{% url 'social:begin' 'twitter' %}"  class="btn btn-block btn-social btn-twitter">
+           <span class="fa fa-twitter"></span> Sign in with Twitter
+    </a>
+    <a href="{% url 'social:begin' 'facebook' %}"  class="btn btn-block btn-social btn-facebook">
+           <span class="fa fa-facebook"></span> Sign in with facebook
+    </a>
+
+
+
+<div style="padding: 20px 0; text-align: center" class="center-block">OR </div>
+  <form method="post" id="login-form" action="/login/" style="">
+    {% csrf_token %}
+    {% for field in form %}
+      <div class="input-field" style="padding-bottom: 20px">
+        
+        <!--{{ field.label_tag }}<br>-->
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </div>
+    {% endfor %}
+    <!--<div class="modal-content">-->
+    <button style="margin: 10px 0" class="btn  btn-warning " type="submit"><a style="text-decoration: none;color: white" href="/signup"> Register</a></button>
+    <button id="btn_login" style="margin: 10px 0" class="btn  btn-primary pull-right" type="submit">Login</button>
+    <!--</div>-->
+
+  </form>
+
+
+
+            
+        </div>
+   
+</div>
+
+
+
+
+{% block extra_script %}
+<script>
+
+  var form_options={
+    target:'#modal1',
+    beforeSubmit:function(){
+      // alert('submitting')
+    },
+    success:function(responseText,statusText){
+          // alert(statusText);
+          // console.log('resp:'+responseText);
+          // window.location.href='/'
+        },
+    error:function(responseText,statusText){
+          // alert(statusText);
+          // console.log('resp:'+responseText);
+          // window.location.href='/'
+        },    
+
+    };
+  $('#login-form').ajaxForm(form_options);
+
+$(function(){
+    // $('#id_username').addClass('validate');
+    // $('#id_username').attr({'placeholder':'Enter Email'});
+
+    $('#id_username').parent('div').prepend('<label for="username">Email</label>')
+    $('#id_username').parent('div').prepend('<i class="material-icons prefix">mail</i>')
+
+
+    // $('#id_password').addClass('validate');
+    // $('#id_password').attr({'placeholder':'Password'});
+    $('#id_password').parent('div').prepend('<label for="password">Password</label>')
+    $('#id_password').parent('div').prepend('<i class="material-icons prefix">security</i>')
+
+    $('#btn_login').on('click',function(){
+      // alert('sssssssssssssssss')
+      sessionStorage.setItem('login',1);
+
+    })
+})
+
+
+
+
+    </script>
+    <script src="/static/js/jquery.form.js"></script>
+{% endblock %}

@@ -1,0 +1,61 @@
+.sidebar{
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top:0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top:120px;
+    transition: 0.5s; 
+    
+}
+
+.sidebar a{
+    padding: 8px 20px 8px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    border-top: solid 2px black; 
+}
+
+.sidebar input{
+    margin-left: 20px;
+    margin-left: 20px;
+}
+
+.sidebar a:hover{
+    background-color: #444;
+    font-size: 100%;
+}
+.sidebar .closebtn{
+    position: absolute;
+    top:40px;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+#content{
+    
+    
+}
+
+.mytoggle{
+    display: block;
+    margin-right: 5px;
+    border-right: none;
+}
+
+body{
+    transition: 0.5s;
+    overflow-x: hidden;
+
+}
+@media screen and (max-width: 768px){
+.mytoggle{
+    display: none;
+} 
+}

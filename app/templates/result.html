@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+  {% load staticfiles %}
+  {% load social_widgets %}
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="author" content="">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Udec - A Platform Where U Decide</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="http://bigwan.pythonanywhere.com/static/img/UDEC LOGO.png" rel="shortcut icon" type="image/x-icon">
+
+        <meta property="og:url"           content="http://bigwan.pythonanywhere.com" />
+        <meta property="og:type"          content="article" />
+        <meta property="og:title"         content="Udec Initiative" />
+        <meta property="og:description"   content="Business Research and Opinion Survey Platform" />
+        <meta property="og:image"         content=""/>
+
+        <meta name="twitter:card" content="summary" >
+        <meta name="twitter:site" content="@solixz" >
+        <meta name="twitter:title" content="Unbiased Non-Partisan Analysis of Public Opinion" >
+        <meta name="twitter:description" content="Udec is The Number One Platform that Provide Researh and Analysis of Public Opinion" >
+        <meta name="twitter:creator" content="@solixz" >
+        <meta name="twitter:image" content="http://bigwan.pythonanywhere.com/static/img/chart.png" >
+        <meta name="twitter:domain" content="http://bigwan.pythonanywhere.com" >
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="/static/css/bootstrap.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  
+  
+   <link href="{% static 'css/style.css'%}" rel="stylesheet">
+    <link href="{% static 'css/style2.css'%}" rel="stylesheet">
+    <link href="/static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="/static/css/font-awesome.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="/static/css/materialize-social.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/static/css/style_.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <style>
+      .card-panel{
+          padding-top:5px;
+          font-weight: bolder;
+      }
+      .in-the-news h6{
+            margin-top:20px;
+            color: #ef2d27;
+            font-weight: bolder;
+      }
+      .in-the-news div{
+            border-bottom: dashed 1px grey;
+            padding-bottom: 10px;
+
+      }
+      #content-container{
+          padding-top: 50px;
+      }
+      .news-thumb-col h6{
+          font-weight: bold;
+      }
+      .news-thumb-col img{
+          max-width: 100%;
+      }
+      .leftnav .collection-item{
+          background-color: #f5f5f5;
+      }
+      .leftnav .collection-item a{
+          color: #444444;
+          text-decoration: none;
+      }
+      .leftnav .collection-item:hover{
+          background-color: #ef2d27;
+          /*color: #f5f5f5;*/
+          font-size: 150%;
+          /*font-weight: bold;*/
+      }
+       .leftnav .collection-item a:hover{
+          color: #ffffff;
+          
+      }
+      .middle-col a{
+          text-decoration: none;
+          color: #333333;
+      }
+
+      .news-thumb-title a:hover{
+          color: red;
+      }
+
+  </style>
+</head>
+<body>
+
+   <!--<div class="navbar-fixed">-->
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper">
+      <a id="logo-container" href="/index" class="brand-logo"><img src="/static/img/udec_logo.png" width="150"></a>
+       
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/opinion/all">Poll & Survey</a></li>
+        <li><a href="#">Services & Solution</a></li>
+        <li><a href="/result">Result & Analysis</a></li>
+        <li><a href="/result/politics">Politics</a></li>
+        <li><a href="/result/economy">Economy</a></li>
+         {% if user.is_authenticated %}
+            <li><a href="/logout">Login Out</a></li>
+        {% else %}
+            <li><a class="modal-trigger" href="#modal1">Login</a></li>
+            
+        {% endif %}
+        
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+         <li><a href="/opinion/all">Poll & Survey</a></li>
+        <li><a href="#">Services & Solution</a></li>
+        <li><a href="/result">Result & Analysis</a></li>
+        <li><a href="/result/politics">Politics</a></li>
+        <li><a href="/result/economy">Economy</a></li>
+        {% if user.is_authenticated %}
+            <li><a href="/logout">Login Out</a></li>
+        {% else %}
+            <li><a class="modal-trigger" href="#modal1">Login</a></li>
+            
+        {% endif %}
+
+
+
+        
+       
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+
+  <!--Modal login-->
+
+
+<!--<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>-->
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    
+  </div>
+          
+
+
+
+<!--end to modal-->
+
+
+
+
+
+
+
+  <!--</div>-->
+  
+ 
+<!-- BEGIN CONTENT CONTAINER-->
+
+    <div id="content-container" class="container">
+        <div class="row">
+            <div class="col l3">
+                <section class="leftbar">
+                    <div class="leftnav">
+                          <input type="search" name="" id="input1/(\w+)/\u\1/g" class="form-control" value="" required="required" placeholder="Search ..." title="">
+                        <ul class="collection with-header ">
+                            <li class="collection-header red darken-1"><h5>Results</h5></li>
+                            <li class="collection-item "><a href="#!">  <div>Politics<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></a></li>
+                            <li class="collection-item"><a href="#!"> <div>Economy<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></a></li>
+                            <li class="collection-item"><a href="#!"> <div>Society<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></a></li>
+                            <li class="collection-item"><a href="#!" ><div>Live Result<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></a></li>
+                            <li class="collection-item"><a href="#!" ><div>Corporate<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></a></li>
+                            <li class="collection-item"><a href="#!" ><div>Consumer<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></a></li>
+                            <li class="collection-item"><a href="#!" ><div>Archive<a href="#!" class="secondary-content"><i class="material-icons">send</i></a></div></a></li>
+                        </ul>
+
+                    </div>
+                    <div class="hot-topic">
+                        <div><h5> LATEST TOPICS </h5> </div>
+                         <ul class="collection">
+                                
+                                <li class="collection-item avatar">
+                                <img src="images/yuna.jpg" alt="" class="circle">
+                                <span class="title">Title</span>
+                               
+                                
+                                </li>
+                                <li class="collection-item avatar">
+                                <i class="material-icons circle">folder</i>
+                                <span class="title">Title</span>
+                                
+                                
+                                </li>
+                                <li class="collection-item avatar">
+                                <i class="material-icons circle green">insert_chart</i>
+                                <span class="title">Title</span>
+                                
+                               
+                                </li>
+                                <li class="collection-item avatar">
+                                <i class="material-icons circle red">play_arrow</i>
+                                <span class="title">Title</span>
+                                
+                               
+                                </li>
+                        </ul>
+            
+                    </div>
+                     <div class="frelancers">
+                        <div><h5> FRELANCERS </h5> </div>
+                         <ul class="collection">
+                                
+                                <li class="collection-item avatar">
+                                <img src="images/yuna.jpg" alt="" class="circle">
+                                <span class="title">Title</span>
+                                <p>First Line <br>
+                                    Second Line
+                                </p>
+                                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                                </li>
+                                <li class="collection-item avatar">
+                                <i class="material-icons circle">folder</i>
+                                <span class="title">Title</span>
+                                <p>First Line <br>
+                                    Second Line
+                                </p>
+                                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                                </li>
+                                <li class="collection-item avatar">
+                                <i class="material-icons circle green">insert_chart</i>
+                                <span class="title">Title</span>
+                                <p>First Line <br>
+                                    Second Line
+                                </p>
+                                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                                </li>
+                                <li class="collection-item avatar">
+                                <i class="material-icons circle red">play_arrow</i>
+                                <span class="title">Title</span>
+                                <p>First Line <br>
+                                    Second Line
+                                </p>
+                                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                                </li>
+                        </ul>
+            
+                    </div>
+
+                </section>
+
+            </div>
+            <div  class="col l6 middle-col">
+                <div class="row">
+                    <div class="col s12" style="padding-bottom: 20px;border-bottom: solid 1px grey">
+                        <div class="news-title"><h4> {{ hero.title|safe}}</h4></div>
+                        <img class="responsive-img" src="/media/{{hero.story_hero_image}}">
+                        <div class="img-overlay"><a href="/result_detail/{{hero.url}}"> {{ hero.story_content|safe|truncatewords:"60"}}</a></div>
+
+                    </div>
+                </div>
+                 <div class="row">
+                      {%for page in pages%}
+                    <div class="col l6 news-thumb-col">
+                        <div class="news-thumb-title"><h6><a href="/result_detail/{{page.url}}">{{page.title|safe}} </a></h6></div>
+                        <img src="/media/{{page.story_hero_image}}" class="responsive-img">
+                        <p><a href="/result_detail/{{page.url}}"> {{ page.story_content|safe|truncatewords:"20"}}</a></p>
+                        
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+            <div class="col l3">
+                <div><h5>STAT OF THE DAY </h5></div>
+                <div class="card-panel grey lighten-4" style="">
+                    <span><h1 class="red-text">66%</h1> of south eastherner says no to succession !!! </span>
+                    <div class="red-text"><h6>READ MORE >>></h6></div>
+                </div>
+                <div class="card-panel">
+                    <div>
+                        <h6>Udec Election Center</h6>
+                        <p>The 2019 NG General Election Model</p>
+                        <i class="flow-text btn red " >Go to Election Center</i>
+                    </div>
+                </div>
+                <div class="card-panel">
+                    <div>
+                        <h6>Udec Profile</h6>
+                        <p style="padding-top:100px ">Search for any Brand, Celebrity or things and find out about their customers</p>
+                         
+                         <input type="search" name="" id="input1/(\w+)/\u\1/g" class="form-control" value="" required="required" placeholder="Search ..." title="">
+                         
+                    </div>
+                </div>
+                <div class="in-the-news">
+                    <div><h6>UDEC IN THE NEWS</h6></div>
+                        <ul>
+                            <h6>NIGERIA GARDIAN</h6>
+                            <div>H will turn out of 2019 Election be</div>
+                            <h6>NIGERIA GARDIAN</h6>
+                            <div>H will turn out of 2019 Election be</div>
+                            <h6>NIGERIA GARDIAN</h6>
+                            <div>H will turn out of 2019 Election be</div>
+                            <h6>NIGERIA GARDIAN</h6>
+                            <div>H will turn out of 2019 Election be</div>
+                        
+                        </ul>
+                </div>
+                
+
+            </div>
+        </div>
+    </div>
+
+<!-- END CONTENT CONTAINER-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+  <footer class="page-footer " style="background-color: #266aa4;">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col l3 s12">
+           <ul>
+                <li class="footer-subhead"><h5>Udec On Twitter</h5></li>
+
+                <li> <a class="twitter-timeline"  href="https://twitter.com/hashtag/unity3d" data-widget-id="882244242508328960">#unity3d Tweets</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                </li>
+            </ul>
+
+        </div>
+        <div class="col l3 s12">
+            
+            <ul>
+                                <li class="footer-subhead"><h5>UDEC Initiative </h5></li>
+                                <li style="text-align: left">
+                                    <p>
+                                        The Bigwan Initiative is poised to be the first indigenous research
+                                         based strategy group in Nigeria. Our goal is to provide data 
+                                         oriented services to a host of consumers while also offering predictive 
+                                         solutions to a wide variety of clients. 
+                                    </p>
+                                    <li>
+
+                                         <div class="social-buttons">
+                             
+
+                                <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+                                <script type="IN/Share" data-url="http://bigwan.pythonanywhere.com"></script>
+                                {% social_widget_render "twitter/follow_button.html" username="solixz" show_screen_name=True %}
+                              
+                                        
+                                    </li>
+                                
+                            </ul>
+
+        </div>
+        <div class="col l3 s12">
+              <ul class="footer-subhead"><h5>Contact Us</h5></li>
+                     <li>
+                                    No 42, 5th Floor,
+                                    Western House, Broad Street
+                                    +234 (0) 8135773940
+                                    +234 (0) 0000000000
+                                    info@udecinitiative.com
+
+                                    
+                      </li>
+                      </ul>
+        </div>
+
+         <div class="col l3 s12" style="padding-right: 10px">
+                 <ul>
+                      <li class="footer-subhead"><h5>Locate Us:</h5></li>
+                      <li id="map">
+                          <iframe style="border-radius: 5px;position: relative" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.5346251869987!2d3.387373814604186!3d6.453732425761343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b11de11c53b%3A0x8d3e2dca80ed48ca!2sWestern+House%2C+Broad+St%2C+Lagos+Island%2C+Lagos!5e0!3m2!1sen!2sng!4v1499248624923" width="300" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+                      </li>
+                </ul>
+
+         </div>
+
+
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="brown-text text-lighten-3" href="/">Udec</a>
+      </div>
+      <div class="container">
+     
+      <p>&nbsp</p>
+      <p>&nbsp</p>
+      </div>
+    </div>
+
+
+                <!-- EXCHANGERATES.ORG.UK LIVE CURRENCY RATES TICKER START -->
+<iframe id="ticker" src="http://www.exchangerates.org.uk/widget/ER-LRTICKER.php?w=1800&s=1&mc=NGN&mbg=F0F0F0&bs=yes&bc=000044&f=verdana&fs=10px&fc=000044&lc=000044&lhc=FE9A00&vc=FE9A00&vcu=008000&vcd=FF0000&" width="1800" height="30" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
+<!-- EXCHANGERATES.ORG.UK LIVE CURRENCY RATES TICKER END -->
+
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="/static/js/jquery.js"></script>
+  <script src="/static/js/jquery.form.js"></script>
+  <script src="{% static 'js/bootstrap.js' %}"></script>  
+  <script src="/static/js/materialize.js"></script>
+  <script src="/static/js/init.js"></script>
+  <script src="/static/js/main_.js"></script>
+  <script src="{% static 'js/main_1.js' %}"></script>
+
+<script >
+
+  // revealing cards
+$('.card').hover(function(){
+
+    $(this).find('> div.card-image > img.activator').click()
+    console.log('11111111111111')
+
+},function(){
+    $(this).find('> div.card-reveal > span.card-title').click();
+    console.log('222222222222')
+ }
+);
+
+  </script>
+
+  </body>
+</html>

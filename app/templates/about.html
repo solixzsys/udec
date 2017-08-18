@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+ {% block extra_style %}
+<style>
+    ul.about-list li{
+        list-style: circle;
+        list-style-position: inherit;
+        display: list-item;
+    text-align: -webkit-match-parent;
+    
+    }
+    ul{
+        margin-top: 0;
+    margin-bottom: 10px;
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+    }
+h1,h2{
+    padding: 20px 0 0 0;
+}
+
+</style>
+ 
+ {% endblock %}
+ 
+
+{% block middlecol %}
+
+<div class="col-xs-12" style="padding: 50px 0">
+    <h1 style="padding: 10px 0"> About Us</h1>
+
+
+          <p>  Udec is the first indigenous technology driven research based strategy group with the primary goal of transforming professionally and inclusively collated data into winning strategies for organizations while promoting and ensuring transparency and integrity in governance.</p>
+<h2>Who We Are</h2>
+We are a research based strategy group for government and business. Using a wide range of methods and techniques in the furtherance of our goals and objectives and also in the interest of our clients and the larger populace. We are invariably an advocacy group championing the noble cause of Nation Building and healthy result oriented business best practices through facilitating a platform where the decision-making process is inclusive of everyone from all spheres of life. We understand that the concept of Nation Building is a collective one and therefore, we are essentially committed to the idea of its fruition.
+<h2>What We Do</h2>
+      We believe in the power data holds in ensuring nation development and economic growth as such, at Udec.ng
+      <ul class="about-list">
+<li>	We conduct both online and offline polls and surveys on topical issues directed at the right target audience and stakeholders.</li>
+<li>	Our team of seasoned analysts regularly dissect and give professional interpretations and opinions on governmental policies.</li>
+<li>	Provide the opportunity for users to voice their opinions in a meaningful manner which will eventually have lasting impact.</li>
+<li>	Provide opinion collating solutions while conducting research to help influence the business development or go-to-market strategy of SMEs and Multinationals.</li>
+<li>	Provide political strategy and campaign management development solutions.</li>
+      </ul>
+At Udec, our logic ensures valid date is provided to the relevant stakeholders to ensure more functional and impactful delivery across boards.
+
+
+
+
+</div>
+
+
+
+{% endblock %}
