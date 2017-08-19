@@ -4,7 +4,7 @@
 ### VisualStudioCode ###
 .vscode/*
 asst/*
-media/*
+
 static/*
 app/migrations/*
 .vscode/*
