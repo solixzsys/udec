@@ -1,10 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  {% load staticfiles %}
+   {% load staticfiles %}
+  {% load social_widgets %}
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Parallax Template - Materialize</title>
+   <meta name="author" content="">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Udec - A Platform Where U Decide</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="http://udec.pythonanywhere.com/static/img/UDEC LOGO.png" rel="shortcut icon" type="image/x-icon">
+
+        <meta property="og:url"           content="http://udec.pythonanywhere.com" />
+        <meta property="og:type"          content="article" />
+        <meta property="og:title"         content="Udec Initiative" />
+        <meta property="og:description"   content="Business Research and Opinion Survey Platform" />
+        <meta property="og:image"         content=""/>
+
+        <meta name="twitter:card" content="summary" >
+        <meta name="twitter:site" content="@solixz" >
+        <meta name="twitter:title" content="Unbiased Non-Partisan Analysis of Public Opinion" >
+        <meta name="twitter:description" content="Udec is The Number One Platform that Provide Researh and Analysis of Public Opinion" >
+        <meta name="twitter:creator" content="@solixz" >
+        <meta name="twitter:image" content="http://udec.pythonanywhere.com/static/img/chart.png" >
+        <meta name="twitter:domain" content="http://udec.pythonanywhere.com" >
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -137,7 +157,7 @@
 <!--end to modal-->
 
 
-<section style="padding-top: 5em">
+<section  style="padding-top: 5em;">
     
             
     <div  id="content" class="container" style="position: relative">
@@ -249,40 +269,89 @@
 
  
 
-  <footer class="page-footer teal">
-    <div class="container">
+ 
+  <footer class="page-footer " style="background-color: #266aa4;">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+        <div class="col l3 s12">
+           <ul>
+                <li class="footer-subhead"><h5>Udec On Twitter</h5></li>
 
+                <li> <a class="twitter-timeline"  href="https://twitter.com/hashtag/unity3d" data-widget-id="882244242508328960">#unity3d Tweets</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                </li>
+            </ul>
 
         </div>
         <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
+            
+            <ul>
+                                <li class="footer-subhead"><h5>UDEC Initiative </h5></li>
+                                <li style="text-align: left">
+                                    <p>
+                                        The Bigwan Initiative is poised to be the first indigenous research
+                                         based strategy group in Nigeria. Our goal is to provide data 
+                                         oriented services to a host of consumers while also offering predictive 
+                                         solutions to a wide variety of clients. 
+                                    </p>
+                                    <li>
+
+                                         <div class="social-buttons">
+                             
+
+                                <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+                                <script type="IN/Share" data-url="http://bigwan.pythonanywhere.com"></script>
+                                {% social_widget_render "twitter/follow_button.html" username="solixz" show_screen_name=True %}
+                              
+                                        
+                                    </li>
+                                
+                            </ul>
+
         </div>
         <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
+              <ul class="footer-subhead"><h5>Contact Us</h5></li>
+                     <li>
+                                    No 42, 5th Floor,
+                                    Western House, Broad Street
+                                    +234 (0) 8135773940
+                                    +234 (0) 0000000000
+                                    info@udecinitiative.com
+
+                                    
+                      </li>
+                      </ul>
         </div>
+
+         <div class="col l3 s12" style="padding-right: 10px">
+                 <ul>
+                      <li class="footer-subhead"><h5>Locate Us:</h5></li>
+                      <li id="map">
+                          <iframe style="border-radius: 5px;position: relative" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.5346251869987!2d3.387373814604186!3d6.453732425761343!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b11de11c53b%3A0x8d3e2dca80ed48ca!2sWestern+House%2C+Broad+St%2C+Lagos+Island%2C+Lagos!5e0!3m2!1sen!2sng!4v1499248624923" width="300" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+                      </li>
+                </ul>
+
+         </div>
+
+
       </div>
     </div>
     <div class="footer-copyright">
       <div class="container">
-      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      Made by <a class="brown-text text-lighten-3" href="/">Udec</a>
+      </div>
+      <div class="container">
+     
+      <p>&nbsp</p>
+      <p>&nbsp</p>
       </div>
     </div>
+
+
+                <!-- EXCHANGERATES.ORG.UK LIVE CURRENCY RATES TICKER START -->
+<iframe id="ticker" src="http://www.exchangerates.org.uk/widget/ER-LRTICKER.php?w=1800&s=1&mc=NGN&mbg=F0F0F0&bs=yes&bc=000044&f=verdana&fs=10px&fc=000044&lc=000044&lhc=FE9A00&vc=FE9A00&vcu=008000&vcd=FF0000&" width="1800" height="30" frameborder="0" scrolling="no" marginwidth="0" marginheight="0"></iframe>
+<!-- EXCHANGERATES.ORG.UK LIVE CURRENCY RATES TICKER END -->
+
   </footer>
 
 
@@ -339,7 +408,7 @@ $(function(){
         //  $($('.poll-tag')[0]).css('opacity',1)
       
 
-    }, 5000);
+    }, 3000);
 
 
 

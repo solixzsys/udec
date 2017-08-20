@@ -44,20 +44,16 @@
 
 
         <script>
+ 
+
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '1585449031507058',
+      appId      : '1423684577752871',
+      cookie     : true,
       xfbml      : true,
-      version    : 'v2.9'
+      version    : 'v2.8'
     });
-
-//     FB.ui(
-//  {
-//   method: 'share',
-//   href: 'http://bigwan.pythonanywhere.com'
-// }, function(response){});
-
-    FB.AppEvents.logPageView();
+    FB.AppEvents.logPageView();   
   };
 
   (function(d, s, id){
@@ -67,6 +63,7 @@
      js.src = "//connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
+
 
 
   var customerPopup = function (e, intWidth, intHeight, blnResize) {
