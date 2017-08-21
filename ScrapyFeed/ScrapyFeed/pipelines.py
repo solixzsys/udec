@@ -11,6 +11,7 @@ os.environ['DJANGO_SETTINGS_MODULE']='yourvoice.settings'
 
 django.setup()
 from app.models import ScrapyFeed
+from bs4 import BeautifulSoup as bs
 
 class ScrapyfeedPipeline(object):
     def process_item(self, item, spider):
@@ -27,10 +28,15 @@ class PunchPipeline(object):
         name=item['name']
         scrap_on=item['scrap_on']
         temp=item['story']
-        sub=re.sub(r'<script>.*</script>',' ',temp)
-        sub=re.sub(r'<style>.*</style>',' ',sub)
+        soup=bs(temp)
+        [s.extract() for s in soup('script')]
         
-        story=sub
+        
+        [s.extract() for s in soup('style')]
+
+
+        
+        story=str(soup)
         
 
 

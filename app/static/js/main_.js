@@ -1,4 +1,25 @@
+
+function mobileview(){
+    var w=window.outerWidth
+    if(w<=800){
+        $('#index-banner').remove();
+        $('#index-mobile').css('display','block')
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+mobileview()
+
 $(function(){
+
 
 
 $('.modal').modal({
@@ -168,7 +189,10 @@ function header_anim(){
 
 }
 
-header_anim();
+if(window.outerWidth>550){
+    header_anim();
+}
+
 
 
     // var carousel_time=5000;
@@ -264,7 +288,9 @@ header_anim();
 
     }
 
-
+    $('#to_top').on('click',function(){
+        $('html,body').animate({scrollTop:$('.nav-wrapper').offset().top},2000);
+    })
     $('#to_poll').on('click',function(){
         $('html,body').animate({scrollTop:$('#poll-container').offset().top},2000);
     })

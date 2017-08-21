@@ -184,7 +184,7 @@
       <div id="msg-wrapper" class="container ">
         <br><br>
         
-        <h1  class="header center white-text text-lighten-2 msg">Welcome To Udec</h1>
+        <h1 style="font-weight: bolder"  class="header center white-text text-lighten-2 msg">Welcome To Udec</h1>
         <div class="row center msg" >
           <h5 class="header col s12 light">A Platform That Gives Life To Your Opinion </h5>
         </div>
@@ -198,7 +198,65 @@
     </div>
     <!--<div class="parallax"><img src="/static/img/eastv1.jpg" alt="Unsplashed background img 1"></div>-->
   </div>
+  <div style="display: none;width: 100%; background-color: #444444;padding: 20px" id="index-mobile">
+        <div class="row">
+              <div id="intro" class="col s12" style="color: #ffffff;text-align: center;padding-bottom: 20px">
+                <a class="waves-effect waves-light blue btn">Login</a>
+                
+                <h3 style="font-weight: bolder" class="red-text text-lighten-1">Welcome to Udec</h3>
+                <h6> A Platform where your Opinion are Valued</h6>
+
+              </div>
+              <div id="p" class="col s12">
+                <div style="border: solid 1px #eeeeee;border-radius: 5px;padding: 20px;color: #ffffff;margin-top: 20px">
+                  <div class="row">
+                  <div class="col s3">
+                  <i class="fa fa-3x fa-comment"></i>
+                  </div>
+                  <div class="col s9">
+                  <h4 style="display: inline">Poll and Survey</h4> 
+                  </div>
+                  </div>
+                </div>
+
+              </div>
+              <div id="r" class="col s12">
+                    <div style="border: solid 1px #eeeeee;border-radius: 5px;padding: 20px;color: #ffffff;margin-top: 20px">
+                      
+                      <div class="row">
+                          <div class="col s3">
+                          <i class="fa fa-3x fa-book"></i>
+                          </div>
+                          <div class="col s9">
+                          <h4 style="display: inline">Result</h4> 
+                          </div>
+                      </div>
+                    </div>
+              </div>
+
+              
+              <div id="s" class="col s12">
+                      <div style="border: solid 1px #eeeeee;border-radius: 5px;padding: 20px;color: #ffffff;margin-top: 20px">
+                          <div class="row">
+                              <div class="col s3">
+                              <i class="fa fa-3x fa-compass"></i>
+                              </div>
+                              <div class="col s9">
+                              <h4 style="display: inline">Solutions</h4> 
+                              </div>
+                          </div>
+                      </div>
+              </div>
+
+        </div>
   </div>
+
+    
+  </div>
+
+
+
+  
 
 <div id="uid">{{user.username}}</div>
 
@@ -211,7 +269,7 @@
 
       <div class="fixed-action-btn vertical">
           <a class="btn-floating btn-small red">
-            <i class="small material-icons">mode_edit</i>
+            <i id="to_top" class="small material-icons">mode_edit</i>
           </a>
           <ul>
             <li id="to_team" class="tooltipped left" data-tooltip="our team"><a class="btn-floating red "><i class="material-icons">group</i></a></li>

@@ -83,6 +83,11 @@
       .poll-tag{
           position: relative;
       }
+      #preloader{
+          position: absolute;
+          top: 50%;
+          left: 50%;
+      }
 
 
 @media only screen   and (max-width : 320px) {
@@ -403,12 +408,15 @@ var arrange_poll = function(){
 }
 $(function(){
     
+    $('body').append('<img id="preloader" src="/static/img/Preloader_2.gif" />')
+
     setTimeout(function() {
+        $('#preloader').css('display','none')
         arrange_poll();
         //  $($('.poll-tag')[0]).css('opacity',1)
       
 
-    }, 3000);
+    }, 4000);
 
 
 
