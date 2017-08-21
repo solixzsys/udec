@@ -3,7 +3,12 @@ function mobileview(){
     var w=window.outerWidth
     if(w<=800){
         $('#index-banner').remove();
-        $('#index-mobile').css('display','block')
+        $('#index-mobile').css('display','block');
+
+        $('.no-mobile').remove();
+        
+
+
     }
     
 }

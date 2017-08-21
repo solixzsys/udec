@@ -253,7 +253,9 @@ background-color: #42A5F5;
 div.carousel .card .card-image img{
   height: 300px;
 }
-
+body > nav > div > a.button-collapse > i{
+  font-weight: bolder;
+}
 
 
 

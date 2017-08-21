@@ -162,7 +162,7 @@
 
     <div id="content-container" class="container">
         <div class="row">
-            <div class="col l3">
+            <div class="col l3 no-mobile">
                 <section class="leftbar">
                     <div class="leftnav">
                           <input type="search" name="" id="input1/(\w+)/\u\1/g" class="form-control" value="" required="required" placeholder="Search ..." title="">
@@ -263,7 +263,7 @@
                 </div>
                  <div class="row">
                       {%for page in pages%}
-                    <div class="col l6 news-thumb-col">
+                    <div class="col l6 news-thumb-col" style="border-bottom: solid 1px lightgrey">
                         <div class="news-thumb-title"><h6><a href="/result_detail/{{page.url}}">{{page.title|safe}} </a></h6></div>
                         <img src="/media/{{page.story_hero_image}}" class="responsive-img">
                         <p><a href="/result_detail/{{page.url}}"> {{ page.story_content|safe|truncatewords:"20"}}</a></p>
@@ -273,7 +273,7 @@
                 </div>
 
             </div>
-            <div class="col l3">
+            <div class="col l3 no-mobile">
                 <div><h5>STAT OF THE DAY </h5></div>
                 <div class="card-panel grey lighten-4" style="">
                     <span><h1 class="red-text">66%</h1> of south eastherner says no to succession !!! </span>
