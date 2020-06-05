@@ -8,7 +8,7 @@ constantly==15.1.0
 cryptography==1.9
 cssselect==1.0.1
 defusedxml==0.5.0
-Django==1.11.2
+Django==1.11.29
 django-ckeditor==5.2.2
 django-extended-flatpages==0.1
 django-ipware==1.1.6
